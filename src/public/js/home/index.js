@@ -5,7 +5,6 @@ const input = document.querySelector("div input"),
     result = document.querySelector('#result');
 
 inputBtn.addEventListener('click', inputReq);
-
 function inputReq( ) {
     const req = input.value
     if (req === 'exit') exitMsg();
@@ -13,14 +12,15 @@ function inputReq( ) {
     calculate(reqArr);
 };
 
-function exitMsg () {return alert('종료')};
+function exitMsg() {return alert('종료')};
 
 function calculate(reqArr) {
-    if (reqArr.length === 1) return console.log(reqArr[0]);
+    if (reqArr.length === 1) return result.innerHTML = `${reqArr[0]}`
     for (let i = 0; i < reqArr.length; i++) {
         if (reqArr.includes('*') || reqArr.includes('/')) preCalculate(i, reqArr); 
         else if (reqArr[i] === '+' || reqArr[i] === '-') nextCalculate(i, reqArr);
     };
+    result.innerHTML = `${reqArr}`
 };
 
 function preCalculate(i, reqArr) {
